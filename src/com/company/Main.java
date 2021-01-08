@@ -5,8 +5,5 @@ public class Main {
         NoteManager noteManager = new NoteManager();
         noteManager.creatGUI();
         noteManager.addNote();
-
-
-
     }
 }

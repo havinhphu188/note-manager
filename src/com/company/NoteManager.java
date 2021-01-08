@@ -1,18 +1,31 @@
 package com.company;
 
+import com.company.component.SaveButton;
 import com.company.component.NoteList;
+import com.company.component.Content;
+import com.company.component.Title;
 import com.company.model.Note;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 
 public class NoteManager {
 
     private JFrame mainFrame;
-    private JTextField txtTitle = new JTextField();
+    private Title txtTitle;
     private NoteList lstNotes;
+    private Mediator mediator;
+    private Content txtContent;
+    private SaveButton btnSave;
+
+
+    public NoteManager() {
+        mediator = new Mediator();
+        txtTitle = new Title(mediator);
+        lstNotes = new NoteList(mediator);
+        txtContent = new Content(mediator);
+
+    }
 
     public void creatGUI() {
 
@@ -38,7 +51,6 @@ public class NoteManager {
         panelFilter.add(txtFilter);
         panelLeft.add(panelFilter);
 
-        lstNotes = new NoteList(txtTitle);
         lstNotes.setPreferredSize(new Dimension(400, 410));
 
         JPanel panelList = new JPanel();
@@ -59,7 +71,7 @@ public class NoteManager {
         JPanel panelTitle = new JPanel();
 
         txtTitle.setColumns(40);
-        JTextArea txtContent = new JTextArea();
+
         txtContent.setPreferredSize(new Dimension(400, 400));
         panelTitle.add( new JLabel("Title"));
         panelTitle.add(txtTitle);
@@ -83,18 +95,4 @@ public class NoteManager {
         Note[] listNoteData = {new Note("one","content1"),new Note("two", "content2"),new Note("three","content3")};
         lstNotes.setListData(listNoteData);
     }
-
-//    public void addListener(){
-//        lstNotes.addListSelectionListener(new ListSelectionListener() {
-//            @Override
-//            public void valueChanged(ListSelectionEvent e) {
-//                if (!e.getValueIsAdjusting()){
-//                    System.out.println("eventCalled");
-//                    JList source = (JList)e.getSource();
-//                    String selected = source.getSelectedValue().toString();
-//                    txtTitle.setText(selected);
-//                }
-//            }
-//        });
-//    }
 }
