@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.component.NoteList;
 import com.company.model.Note;
 
 import javax.swing.*;
@@ -11,7 +12,7 @@ public class NoteManager {
 
     private JFrame mainFrame;
     private JTextField txtTitle = new JTextField();
-    private JList<Note> lstNotes = new JList<>();
+    private NoteList lstNotes;
 
     public void creatGUI() {
 
@@ -36,6 +37,8 @@ public class NoteManager {
         txtFilter.setColumns(20);
         panelFilter.add(txtFilter);
         panelLeft.add(panelFilter);
+
+        lstNotes = new NoteList(txtTitle);
         lstNotes.setPreferredSize(new Dimension(400, 410));
 
         JPanel panelList = new JPanel();
@@ -81,17 +84,17 @@ public class NoteManager {
         lstNotes.setListData(listNoteData);
     }
 
-    public void addListener(){
-        lstNotes.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if (!e.getValueIsAdjusting()){
-                    System.out.println("eventCalled");
-                    JList source = (JList)e.getSource();
-                    String selected = source.getSelectedValue().toString();
-                    txtTitle.setText(selected);
-                }
-            }
-        });
-    }
+//    public void addListener(){
+//        lstNotes.addListSelectionListener(new ListSelectionListener() {
+//            @Override
+//            public void valueChanged(ListSelectionEvent e) {
+//                if (!e.getValueIsAdjusting()){
+//                    System.out.println("eventCalled");
+//                    JList source = (JList)e.getSource();
+//                    String selected = source.getSelectedValue().toString();
+//                    txtTitle.setText(selected);
+//                }
+//            }
+//        });
+//    }
 }
