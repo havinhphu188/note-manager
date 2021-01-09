@@ -30,15 +30,16 @@ public class NoteList extends JList<Note> implements Component{
     }
 
     public void saveNote(Note note){
+        if (this.getSelectedIndex() <0) return;
         this.listModel.set(this.getSelectedIndex(),note);
     }
 
     public void deleteNote() {
         if (this.getSelectedIndex() >= 0) {
             this.listModel.remove(this.getSelectedIndex());
-            if (!this.listModel.isEmpty()){
-                setSelectedIndex(0);
-            }
+        }
+        if (!this.listModel.isEmpty()){
+            setSelectedIndex(0);
         }
     }
 }
