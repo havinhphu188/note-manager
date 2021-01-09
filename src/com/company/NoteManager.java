@@ -1,9 +1,6 @@
 package com.company;
 
-import com.company.component.SaveButton;
-import com.company.component.NoteList;
-import com.company.component.Content;
-import com.company.component.Title;
+import com.company.component.*;
 import com.company.model.Note;
 
 import javax.swing.*;
@@ -17,12 +14,14 @@ public class NoteManager {
     private final Title txtTitle;
     private final NoteList lstNotes;
     private final Content txtContent;
+    private final AddButton btnAdd;
 
     public NoteManager() throws IllegalAccessException {
         mediator = new Mediator();
         txtTitle = (Title) mediator.setComponent(new Title());
         lstNotes = (NoteList) mediator.setComponent(new NoteList(new DefaultListModel<>()));
         txtContent = (Content) mediator.setComponent(new Content());
+        btnAdd = (AddButton) mediator.setComponent(new AddButton("Add"));
     }
 
     public void creatGUI() {
@@ -57,7 +56,7 @@ public class NoteManager {
 
         JPanel panelButton = new JPanel();
         panelButton.setSize(320, 470);
-        JButton btnAdd = new JButton("Add");
+
         JButton btnDel = new JButton("Del");
         panelButton.add(btnAdd);
         panelButton.add(btnDel);
@@ -89,7 +88,4 @@ public class NoteManager {
         mainFrame.setVisible(true);
     }
 
-    public void addNote() {
-        lstNotes.addNote();
-    }
 }

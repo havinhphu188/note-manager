@@ -1,9 +1,6 @@
 package com.company;
 
-import com.company.component.Component;
-import com.company.component.NoteList;
-import com.company.component.Content;
-import com.company.component.Title;
+import com.company.component.*;
 import com.company.model.Note;
 import org.apache.commons.lang3.reflect.FieldUtils;
 
@@ -14,6 +11,7 @@ public class Mediator {
     private NoteList lstNote;
     private Title txtTitle;
     private Content txtContent;
+    private AddButton addButton;
 
     public void selectNote(Note selectedValue) {
         txtTitle.setText(selectedValue.getTitle());
@@ -31,5 +29,9 @@ public class Mediator {
         }
         return component;
     };
+
+    public void addNote() {
+        lstNote.addNote();
+    }
 
 }

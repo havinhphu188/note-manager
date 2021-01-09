@@ -25,6 +25,7 @@ public class NoteList extends JList<Note> implements Component{
     }
 
     public void addNote(){
-        this.listModel.add(0,new Note("t","c"));
+        this.listModel.add(0,new Note("New Note","Note Body"));
+        setSelectedIndex(0);
     }
 }
