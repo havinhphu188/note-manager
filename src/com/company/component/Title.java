@@ -4,12 +4,11 @@ import com.company.Mediator;
 
 import javax.swing.*;
 
-public class Title extends JTextField {
+public class Title extends JTextField implements Component {
     private Mediator mediator;
 
-    public Title(Mediator mediator) {
+    @Override
+    public void setMediator(Mediator mediator) {
         this.mediator = mediator;
-        this.mediator.setTxtTitle(this);
-
     }
 }

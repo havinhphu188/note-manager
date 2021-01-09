@@ -16,15 +16,12 @@ public class NoteManager {
     private NoteList lstNotes;
     private Mediator mediator;
     private Content txtContent;
-    private SaveButton btnSave;
-
 
     public NoteManager() {
         mediator = new Mediator();
-        txtTitle = new Title(mediator);
-        lstNotes = new NoteList(mediator);
-        txtContent = new Content(mediator);
-
+        txtTitle = mediator.setTxtTitle(new Title());
+        lstNotes = mediator.setLstNote(new NoteList());
+        txtContent = mediator.setTxtContent(new Content());
     }
 
     public void creatGUI() {
@@ -93,6 +90,7 @@ public class NoteManager {
 
     public void addNote() {
         Note[] listNoteData = {new Note("one","content1"),new Note("two", "content2"),new Note("three","content3")};
+        // Just for testing
         lstNotes.setListData(listNoteData);
     }
 }

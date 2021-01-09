@@ -5,11 +5,10 @@ import com.company.model.Note;
 
 import javax.swing.*;
 
-public class NoteList extends JList<Note> {
+public class NoteList extends JList<Note> implements Component{
     private Mediator mediator;
-    public NoteList(Mediator mediator) {
-        this.mediator = mediator;
-        this.mediator.setLstNote(this);
+
+    public NoteList() {
         addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()){
                 System.out.println("eventCalled");
@@ -17,5 +16,10 @@ public class NoteList extends JList<Note> {
                 mediator.selectNote(source.getSelectedValue());
             }
         });
+    }
+
+    @Override
+    public void setMediator(Mediator mediator) {
+        this.mediator = mediator;
     }
 }

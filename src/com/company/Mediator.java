@@ -3,10 +3,10 @@ package com.company;
 import com.company.component.SaveButton;
 import com.company.component.NoteList;
 import com.company.component.Content;
+import com.company.component.Title;
 import com.company.model.Note;
 
 import javax.swing.*;
-import java.util.List;
 
 public class Mediator {
     private NoteList lstNote;
@@ -18,16 +18,22 @@ public class Mediator {
         txtContent.setText(selectedValue.getContent());
     }
 
-    public void setLstNote(NoteList lstNote) {
+    public NoteList setLstNote(NoteList lstNote) {
         this.lstNote = lstNote;
+        lstNote.setMediator(this);
+        return lstNote;
     }
 
-    public void setTxtTitle(JTextField txtTitle) {
+    public Title setTxtTitle(Title txtTitle) {
         this.txtTitle = txtTitle;
+        txtTitle.setMediator(this);
+        return txtTitle;
     }
 
-    public void setTxtContent(Content content) {
+    public Content setTxtContent(Content content) {
         this.txtContent = content;
+        content.setMediator(this);
+        return content;
     }
 
 }
