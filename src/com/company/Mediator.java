@@ -13,8 +13,14 @@ public class Mediator {
     private Content txtContent;
     private AddButton addButton;
     private SaveButton saveButton;
+    private DeleteButton deleteButton;
 
     public void selectNote(Note selectedValue) {
+        if (selectedValue == null) {
+            txtTitle.setText("");
+            txtContent.setText("");
+            return;
+        }
         txtTitle.setText(selectedValue.getTitle());
         txtContent.setText(selectedValue.getContent());
     }
@@ -36,7 +42,10 @@ public class Mediator {
     }
 
     public void saveNote() {
-        System.out.println("pp");
         lstNote.saveNote(new Note(txtTitle.getText(),txtContent.getText()));
+    }
+
+    public void deleteNote(){
+        lstNote.deleteNote();
     }
 }
