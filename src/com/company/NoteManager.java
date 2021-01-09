@@ -12,16 +12,17 @@ import java.awt.*;
 public class NoteManager {
 
     private JFrame mainFrame;
-    private Title txtTitle;
-    private NoteList lstNotes;
     private Mediator mediator;
-    private Content txtContent;
 
-    public NoteManager() {
+    private final Title txtTitle;
+    private final NoteList lstNotes;
+    private final Content txtContent;
+
+    public NoteManager() throws IllegalAccessException {
         mediator = new Mediator();
-        txtTitle = mediator.setTxtTitle(new Title());
-        lstNotes = mediator.setLstNote(new NoteList());
-        txtContent = mediator.setTxtContent(new Content());
+        txtTitle = (Title) mediator.setComponent(new Title());
+        lstNotes = (NoteList) mediator.setComponent(new NoteList());
+        txtContent = (Content) mediator.setComponent(new Content());
     }
 
     public void creatGUI() {

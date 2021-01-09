@@ -1,15 +1,18 @@
 package com.company;
 
+import com.company.component.Component;
 import com.company.component.NoteList;
 import com.company.component.Content;
 import com.company.component.Title;
 import com.company.model.Note;
+import org.apache.commons.lang3.reflect.FieldUtils;
 
-import javax.swing.*;
+import java.lang.reflect.Field;
+
 
 public class Mediator {
     private NoteList lstNote;
-    private JTextField txtTitle;
+    private Title txtTitle;
     private Content txtContent;
 
     public void selectNote(Note selectedValue) {
@@ -17,22 +20,16 @@ public class Mediator {
         txtContent.setText(selectedValue.getContent());
     }
 
-    public NoteList setLstNote(NoteList lstNote) {
-        this.lstNote = lstNote;
-        lstNote.setMediator(this);
-        return lstNote;
-    }
-
-    public Title setTxtTitle(Title txtTitle) {
-        this.txtTitle = txtTitle;
-        txtTitle.setMediator(this);
-        return txtTitle;
-    }
-
-    public Content setTxtContent(Content content) {
-        this.txtContent = content;
-        content.setMediator(this);
-        return content;
-    }
+    public Component setComponent(Component component) throws IllegalAccessException {
+        Field[] fields =this.getClass().getDeclaredFields();
+        for (Field f : fields) {
+            if (f.getType() == component.getClass()) {
+                FieldUtils.writeField(f,this,component,true);
+                component.setMediator(this);
+                break;
+            }
+        }
+        return component;
+    };
 
 }
