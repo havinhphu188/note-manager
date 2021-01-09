@@ -21,7 +21,7 @@ public class NoteManager {
     public NoteManager() throws IllegalAccessException {
         mediator = new Mediator();
         txtTitle = (Title) mediator.setComponent(new Title());
-        lstNotes = (NoteList) mediator.setComponent(new NoteList());
+        lstNotes = (NoteList) mediator.setComponent(new NoteList(new DefaultListModel<>()));
         txtContent = (Content) mediator.setComponent(new Content());
     }
 
@@ -90,8 +90,6 @@ public class NoteManager {
     }
 
     public void addNote() {
-        Note[] listNoteData = {new Note("one","content1"),new Note("two", "content2"),new Note("three","content3")};
-        // Just for testing
-        lstNotes.setListData(listNoteData);
+        lstNotes.addNote();
     }
 }

@@ -7,8 +7,11 @@ import javax.swing.*;
 
 public class NoteList extends JList<Note> implements Component{
     private Mediator mediator;
+    private DefaultListModel<Note> listModel;
 
-    public NoteList() {
+    public NoteList(DefaultListModel<Note> listModel) {
+        super(listModel);
+        this.listModel = listModel;
         addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()){
                 mediator.selectNote(this.getSelectedValue());
@@ -19,5 +22,9 @@ public class NoteList extends JList<Note> implements Component{
     @Override
     public void setMediator(Mediator mediator) {
         this.mediator = mediator;
+    }
+
+    public void addNote(){
+        this.listModel.add(0,new Note("t","c"));
     }
 }
