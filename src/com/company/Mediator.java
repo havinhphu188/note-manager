@@ -12,6 +12,7 @@ public class Mediator {
     private Title txtTitle;
     private Content txtContent;
     private AddButton addButton;
+    private SaveButton saveButton;
 
     public void selectNote(Note selectedValue) {
         txtTitle.setText(selectedValue.getTitle());
@@ -34,4 +35,8 @@ public class Mediator {
         lstNote.addNote();
     }
 
+    public void saveNote() {
+        System.out.println("pp");
+        lstNote.saveNote(new Note(txtTitle.getText(),txtContent.getText()));
+    }
 }

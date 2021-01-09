@@ -15,6 +15,7 @@ public class NoteManager {
     private final NoteList lstNotes;
     private final Content txtContent;
     private final AddButton btnAdd;
+    private final SaveButton btnSave;
 
     public NoteManager() throws IllegalAccessException {
         mediator = new Mediator();
@@ -22,6 +23,7 @@ public class NoteManager {
         lstNotes = (NoteList) mediator.setComponent(new NoteList(new DefaultListModel<>()));
         txtContent = (Content) mediator.setComponent(new Content());
         btnAdd = (AddButton) mediator.setComponent(new AddButton("Add"));
+        btnSave = (SaveButton) mediator.setComponent(new SaveButton("Save"));
     }
 
     public void creatGUI() {
@@ -78,7 +80,7 @@ public class NoteManager {
         panelRight.add(new JLabel("Text"));
         panelContent.add(txtContent);
         panelRight.add(panelContent);
-        JButton btnSave = new JButton("Save");
+
         JPanel panelSave = new JPanel();
         panelSave.add(btnSave);
         panelRight.add(panelSave);
