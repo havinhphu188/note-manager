@@ -1,6 +1,5 @@
 package com.company;
 
-import com.company.component.SaveButton;
 import com.company.component.NoteList;
 import com.company.component.Content;
 import com.company.component.Title;
