@@ -11,9 +11,7 @@ public class NoteList extends JList<Note> implements Component{
     public NoteList() {
         addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()){
-                System.out.println("eventCalled");
-                NoteList source = (NoteList) e.getSource();
-                mediator.selectNote(source.getSelectedValue());
+                mediator.selectNote(this.getSelectedValue());
             }
         });
     }
