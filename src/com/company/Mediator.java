@@ -14,6 +14,7 @@ public class Mediator {
     private AddButton addButton;
     private SaveButton saveButton;
     private DeleteButton deleteButton;
+    private Filter filter;
 
     public void selectNote(Note selectedValue) {
         if (selectedValue == null) {
@@ -48,4 +49,10 @@ public class Mediator {
     public void deleteNote(){
         lstNote.deleteNote();
     }
+
+    public void sendFilter(String filterText){
+        lstNote.setFilter(filterText);
+        lstNote.refreshList();
+    }
+
 }

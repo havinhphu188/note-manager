@@ -17,15 +17,17 @@ public class NoteManager {
     private final AddButton btnAdd;
     private final SaveButton btnSave;
     private final DeleteButton btnDel ;
+    private final Filter txtFilter;
 
     public NoteManager() throws IllegalAccessException {
         mediator = new Mediator();
         txtTitle = (Title) mediator.setComponent(new Title());
-        lstNotes = (NoteList) mediator.setComponent(new NoteList(new DefaultListModel<>()));
+        lstNotes = (NoteList) mediator.setComponent(new NoteList());
         txtContent = (Content) mediator.setComponent(new Content());
         btnAdd = (AddButton) mediator.setComponent(new AddButton("Add"));
         btnSave = (SaveButton) mediator.setComponent(new SaveButton("Save"));
         btnDel = (DeleteButton) mediator.setComponent(new DeleteButton("Del"));
+        txtFilter = (Filter) mediator.setComponent(new Filter());
     }
 
     public void creatGUI() {
@@ -47,7 +49,7 @@ public class NoteManager {
         lblFilter.setText("Filter: ");
         panelFilter.add(lblFilter);
 
-        JTextField txtFilter = new JTextField();
+
         txtFilter.setColumns(20);
         panelFilter.add(txtFilter);
         panelLeft.add(panelFilter);
