@@ -13,7 +13,6 @@ public class Filter extends JTextField implements Component {
     @Override
     public void setMediator(Mediator mediator) {
         this.mediator = mediator;
-        System.out.println("mediator = " + mediator);
     }
 
     /**
